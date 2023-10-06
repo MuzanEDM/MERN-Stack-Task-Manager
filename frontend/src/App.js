@@ -3,21 +3,22 @@ import { useEffect, useState} from 'react';
 
 const  App=()=> {
 
-// const [data,setData]=useState([]);
+const [data,setData]=useState([]);
 
-// const getData = async () => {
-//   try {
-//     const response = await Axios.get("http://localhost:5000/getData");
-//     setData((prevData)=>[...prevData,response.data]
-//        );
-//   } catch (error) {
-//     console.error("Error fetching data:", error);
-//   }
-// };
+const getData = async () => {
+  try {
+    const response = await Axios.get("http://localhost:5000/getData");
+    setData(response.data)
+    // console.log('Response from server:', response.data);
+    
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+};
 
-// useEffect(()=>{
-// getData()},
-// []);
+useEffect(()=>{
+getData()},
+[]);
 
 
 
