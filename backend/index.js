@@ -82,15 +82,34 @@ app.post("/getData", async (req, res) => {
 
 
 
-app.delete('/getData/:id', async function(req, res) {
+app.delete('/delData/:id', async function(req, res) {
  
   const taskId = req.params.id;
-  // Add this line to log the requested URL
+  // requested URL
 
     console.log('Requested URL:', taskId);  
-  await Task.findOneAndDelete({_id:taskId})
+  await Task.findOneAndDelete({id:taskId})
     res.json({ success: true });
   
+});
+
+app.put('/upData/:id', async function(req, res) {
+  const taskId = req.params.id;
+  const newValue = req.body.msg;  // Access the new value from the request body
+console.log(newValue)
+
+await Task.findOneAndUpdate({id:taskId},{msg:newValue})
+
+res.json({ success: true });
+
+  // try {
+  //   // Find the task by ID and update the 'msg' field
+  //   await Task.findByIdAndUpdate(taskId, { msg: newValue });
+  //   res.json({ success: true });
+  // } catch (error) {
+  //   console.error('Error updating task:', error);
+  //   res.status(500).json({ error: 'Internal Server Error' });
+  // }
 });
 
 

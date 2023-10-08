@@ -43,7 +43,7 @@ const App = () => {
 
   const deleteData = async (taskId) => {
     try {
-      const response=await Axios.delete(`http://localhost:5000/getData/${taskId}`);
+      const response=await Axios.delete(`http://localhost:5000/delData/${taskId}`);
       console.log(response)
       getData();
     } catch (err) {
@@ -52,7 +52,8 @@ const App = () => {
   };
 
 
-  
+  // const updateTask
+
 
 
   const [editId, setEditId] = useState(null); // ID of the item being edited
@@ -62,13 +63,29 @@ const App = () => {
     setEditId(id);
   };
 
-  const updateTask = (id) => {
-    setData((prevData) =>
-      prevData.map((item) => item.id === id ? { ...item, msg:newVal } : item)
-    );
-    setEditId(null);
+
+  const updateTask=async(taskId)=>{
+    try{
+      await Axios.put(`http://localhost:5000/upData/${taskId}`,{
+        msg:newVal
+      })
+      getData();
+      setEditId(null);
     setNewVal("");
-  };
+    }
+    catch (error) {
+      console.error('Error updating task:', error);
+    }
+    
+  }
+
+  // const updateTask = (id) => {
+  //   setData((prevData) =>
+  //     prevData.map((item) => item.id === id ? { ...item, msg:newVal } : item)
+  //   );
+  //   setEditId(null);
+  //   setNewVal("");
+  // };
 
   return (
     <div>
@@ -101,7 +118,7 @@ const App = () => {
                     setNewVal(event.target.value);
                   }}
                 />
-                <button onClick={() => updateTask(item.id)}>Update</button>
+                <button type="button" onClick={() => updateTask(item.id)}>Update</button>
               </div>
             ) : 
             
@@ -110,9 +127,10 @@ const App = () => {
                 Message: {item.msg}
                 <button
                   type="checkbox"
-                  value={item._id}
-                  onClick={() => deleteData(item._id)}
+                  value={item.id}
+                  onClick={() => deleteData(item.id)}
                 >delete</button>
+
                 <button type="button" onClick={() => edit(item.id)}>
                   Edit
                 </button>
