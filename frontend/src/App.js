@@ -36,9 +36,25 @@ const App = () => {
     }
   };
 
-  const del = (clickedId) => {
-    setData(data.filter((item) => item.id !== clickedId));
+  
+  // const del = (clickedId) => {
+  //   setData(data.filter((item) => item.id !== clickedId));
+  // };
+
+  const deleteData = async (taskId) => {
+    try {
+      const response=await Axios.delete(`http://localhost:5000/getData/${taskId}`);
+      console.log(response)
+      getData();
+    } catch (err) {
+      console.error('Error:', err);
+    }
   };
+
+
+  
+
+
   const [editId, setEditId] = useState(null); // ID of the item being edited
   const [newVal, setNewVal] = useState("");
 
@@ -48,8 +64,7 @@ const App = () => {
 
   const updateTask = (id) => {
     setData((prevData) =>
-      prevData.map((item) => (item.id === id ? [ ...item, msg=
-        newVal ] : item))
+      prevData.map((item) => item.id === id ? { ...item, msg:newVal } : item)
     );
     setEditId(null);
     setNewVal("");
@@ -95,8 +110,8 @@ const App = () => {
                 Message: {item.msg}
                 <button
                   type="checkbox"
-                  value={item.id}
-                  onClick={() => del(item.id)}
+                  value={item._id}
+                  onClick={() => deleteData(item._id)}
                 >delete</button>
                 <button type="button" onClick={() => edit(item.id)}>
                   Edit

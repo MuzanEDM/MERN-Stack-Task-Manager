@@ -79,10 +79,27 @@ app.post("/getData", async (req, res) => {
   }
 });
 
+
+
+
+app.delete('/getData/:id', async function(req, res) {
+ 
+  const taskId = req.params.id;
+  // Add this line to log the requested URL
+
+    console.log('Requested URL:', taskId);  
+  await Task.findOneAndDelete({_id:taskId})
+    res.json({ success: true });
+  
+});
+
+
+
+
+
+
+
 }
-
-
-
 const port = 5000;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
