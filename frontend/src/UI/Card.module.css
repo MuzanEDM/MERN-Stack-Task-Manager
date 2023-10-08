@@ -1,0 +1,17 @@
+.Card{
+    margin:auto;
+    margin-top:2rem ;
+     background-color:#ffffff;
+    
+     width:95%;
+     border-radius: 15px;
+     box-shadow: 0 1px 8px rgba(178, 226, 193, 0.25);
+     overflow:auto;
+ }
+ 
+ @media (max-width: 600px) {
+     .Card {
+        width: 80%; 
+     }
+     
+  }

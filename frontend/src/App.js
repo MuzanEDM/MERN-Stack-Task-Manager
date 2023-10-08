@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 import TaskList from './Task/TaskList'
 import TaskForm from './Task/TaskForm';
-
+import Card from './UI/Card';
+import classes from './App.module.css'
 const App = () => {
   const [data, setData] = useState([]);
 
@@ -25,9 +26,17 @@ const App = () => {
 
   return (
     <div>
+
+      <Card className={classes.Card}>
+      <h1 className={classes.h1}>Task List</h1>
+      </Card>
+
+      <div className={classes["flex-container"]} >
       <TaskForm getData={getData} />
+      
       <TaskList data={data} updateData={updateData} />
-    </div>
+      </div>
+      </div>
   );
 };
 

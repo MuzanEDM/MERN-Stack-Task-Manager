@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import Axios from 'axios';
+import Card from '../UI/Card';
+import classes from './TaskList.module.css';
 
 const TaskList = ({ data, updateData }) => {
   const [editId, setEditId] = useState(null);
@@ -34,32 +36,37 @@ const TaskList = ({ data, updateData }) => {
   };
 
   return (
-    <ul>
+    <ul className={classes.ul}>
       {data.map((item) => (
-        <li key={item.id}>
-          {editId === item.id ? (
-            <div>
-              <input
-                type="text"
-                value={newVal}
-                onChange={(event) => setNewVal(event.target.value)}
-              />
-              <button type="button" onClick={() => handleUpdateTask(item.id)}>
-                Update
-              </button>
-            </div>
-          ) : (
-            <p>
-              Message: {item.msg}
-              <button type="checkbox" onClick={() => handleDelete(item.id)}>
-                Delete
-              </button>
-              <button type="button" onClick={() => handleEdit(item.id)}>
-                Edit
-              </button>
-            </p>
-          )}
-        </li>
+        <Card key={item.id} className={classes.card}>
+          <li className={classes.li}>
+            {editId === item.id ? (
+              <div>
+                <input
+                  className={classes.input}
+                  type="text"
+                  value={newVal}
+                  onChange={(event) => setNewVal(event.target.value)}
+                />
+                <button className={classes.button} type="button" onClick={() => handleUpdateTask(item.id)}>
+                  Update
+                </button>
+              </div>
+            ) : (
+              <div className={classes.btnGroup}>
+                <p className={classes.p}>{item.msg}</p>
+                <div className={classes.btnGroup}>
+                  <button className={classes.button} type="checkbox" onClick={() => handleDelete(item.id)}>
+                    Delete
+                  </button>
+                  <button className={classes.button} type="button" onClick={() => handleEdit(item.id)}>
+                    Edit
+                  </button>
+                </div>
+              </div>
+            )}
+          </li>
+        </Card>
       ))}
     </ul>
   );

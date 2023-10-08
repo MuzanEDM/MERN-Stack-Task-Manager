@@ -25,16 +25,19 @@ const TaskForm = ({ getData }) => {
 
   return (
     <Fragment>
-    <form onSubmit={handleAddTask}>
-      <label>Task</label>
+    <form className={classes.form}onSubmit={handleAddTask}>
+      <h1 className={classes.h1}>Add Task</h1>
       <input
+      className={classes.input}
         type="text"
         name="task"
         value={msg}
+        autoComplete='off'
         onChange={(event) => setMsg(event.target.value)}
       />
-      <button type="submit">Add</button>
+      <button className={classes.button} type="submit">+</button>
     </form>
+    
     </Fragment>
   );
 };
