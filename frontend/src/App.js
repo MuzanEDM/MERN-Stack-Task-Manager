@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 const App = () => {
   const [data, setData] = useState([]);
 
+  
   const getData = async () => {
     try {
       const response = await Axios.get("http://localhost:5000/getData");
@@ -29,7 +30,7 @@ const App = () => {
       });
 
       console.log("Response from server:", response.data);
-      console.log(data);
+      setData([...data, response.data]);
     } catch (err) {
       console.error("Error:", err);
     }
@@ -47,9 +48,9 @@ const App = () => {
 
   const updateTask = (id) => {
     setData((prevData) =>
-      prevData.map((item) => (item.id === id ? { ...item, msg: newVal } : item))
+      prevData.map((item) => (item.id === id ? [ ...item, msg=
+        newVal ] : item))
     );
-
     setEditId(null);
     setNewVal("");
   };
@@ -58,7 +59,7 @@ const App = () => {
     <div>
       <h1>data</h1>
 
-      <form action="POST">
+      <form action="POST" >
         <label>task</label>
         <input
           type="text"
@@ -87,16 +88,17 @@ const App = () => {
                 />
                 <button onClick={() => updateTask(item.id)}>Update</button>
               </div>
-            ) : (
+            ) : 
+            
+            (
               <p>
                 Message: {item.msg}
-                <input
+                <button
                   type="checkbox"
                   value={item.id}
                   onClick={() => del(item.id)}
-                ></input>
+                >delete</button>
                 <button type="button" onClick={() => edit(item.id)}>
-                  {" "}
                   Edit
                 </button>
               </p>
