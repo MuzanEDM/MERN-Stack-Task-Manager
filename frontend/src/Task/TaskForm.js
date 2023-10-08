@@ -4,7 +4,7 @@ import classes from './TaskForm.module.css'
 
 const TaskForm = ({ getData }) => {
   const [msg, setMsg] = useState('');
-
+// posting of new task
   const handleAddTask = async (event) => {
     event.preventDefault();
 
