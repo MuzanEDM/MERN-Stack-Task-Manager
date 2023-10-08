@@ -2,11 +2,14 @@
   
   text-align: center;
   padding: 1rem;
-  background-color:#88b3d2;
+  background-color:#AED2FF;
+  border-radius: 15px;
+ 
 }
 
 .Card{
-  width: 95%;
+  width: 98%;
+ 
 }
 
 .flex-container {
@@ -22,9 +25,10 @@
 
   }
   .h1{
-    margin: 8px;
-    border-radius: 15px;
-    padding:0.5rem
+    margin: 10px;
+    border-radius: 10px;
+    padding:0.8rem;
+    background-color:#AED2FF;
   }
   .flex-container {
     flex-direction: column; 

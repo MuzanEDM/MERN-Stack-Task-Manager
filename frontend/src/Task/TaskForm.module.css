@@ -8,7 +8,7 @@ text-align: center;
     padding: 20px;
      width:300px;
      border-radius: 15px;
-     box-shadow: 5px 5px 1px 1px  rgba(127, 124, 124, 0.25);
+     box-shadow: 5px 5px 1px 1px  rgba(254, 254, 254, 0.25);
      overflow:auto;
 }
 
@@ -21,7 +21,7 @@ text-align: center;
 .button{
     margin: auto;
     margin-top:2rem;
-    margin-left: 6rem;
+    margin-left: 10rem;
     text-align: center;
     font-size:1.5rem;
     padding: 10px;
@@ -49,6 +49,7 @@ text-align: center;
     margin: auto;
     margin-top: 2rem;
     width: 300px;
+    
   }
   
 }
