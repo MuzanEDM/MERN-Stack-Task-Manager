@@ -8,7 +8,7 @@ app.use(bodyParser.json());
 app.use(cors(
   {
       origin: ["https://task-manager-front-end-five.vercel.app"],
-      methods: ["POST", "GET"],
+      methods: ["POST", "GET" ,"DELETE","PUT"],
       credentials: true
   }
 ));
