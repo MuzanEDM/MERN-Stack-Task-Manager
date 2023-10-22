@@ -15,7 +15,7 @@ const TaskList = ({ data, updateData }) => {
 
   const handleUpdateTask = async (taskId) => {
     try {
-      await Axios.put(`http://localhost:5000/upData/${taskId}`, {
+      await Axios.put(`https://mern-stack-task-manager-two.vercel.app/upData/${taskId}`, {
         msg: newVal,
       });
       updateData((prevData) =>
@@ -34,7 +34,7 @@ const TaskList = ({ data, updateData }) => {
 
   const handleDelete = async (taskId) => {
     try {
-      await Axios.delete(`http://localhost:5000/delData/${taskId}`);
+      await Axios.delete(`https://mern-stack-task-manager-two.vercel.app/delData/${taskId}`);
       updateData(data.filter((item) => item.id !== taskId));
     } catch (err) {
       console.error("Error:", err);

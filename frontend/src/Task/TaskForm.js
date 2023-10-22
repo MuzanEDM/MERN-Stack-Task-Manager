@@ -9,7 +9,7 @@ const TaskForm = ({ getData }) => {
     event.preventDefault();
 
     try {
-      const response = await Axios.post('http://localhost:5000/getData', {
+      const response = await Axios.post('https://mern-stack-task-manager-two.vercel.app/getData', {
         id: Math.random(),
         msg: msg,
       });

@@ -11,7 +11,7 @@ const App = () => {
 
   const getData = async () => {
     try {
-      const response = await Axios.get("http://localhost:5000/getData");
+      const response = await Axios.get("https://mern-stack-task-manager-two.vercel.app/getData");
       setData(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);
