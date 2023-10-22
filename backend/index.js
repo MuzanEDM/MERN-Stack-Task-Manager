@@ -5,11 +5,23 @@ const mongoose = require("mongoose");
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors(
+  {
+      origin: ["https://deploy-mern-frontend.vercel.app"],
+      methods: ["POST", "GET"],
+      credentials: true
+  }
+));
+app.use(express.json())
+
+
+
+
+// app.use(cors()); for local use
 
 async function connectToDatabase() {
   try {
-    await mongoose.connect("mongodb://127.0.0.1:27017/test");
+    await mongoose.connect("mongodb+srv://itsa3129:SenSITshI4v6SAvl@cluster0.7ffgssc.mongodb.net/tasks?retryWrites=true&w=majority");
     console.log("Connected to MongoDB");
   } catch (error) {
     console.error("Error connecting to MongoDB:", error);
@@ -82,6 +94,8 @@ app.put("/upData/:id", async function (req, res) {
   }
 });
 
-app.listen(5000, () => {
+const port = process.env.PORT || 5000;
+
+app.listen( port, () => {
   console.log(`Server is running on port 5000 `);
 });
