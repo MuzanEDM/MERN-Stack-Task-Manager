@@ -7,7 +7,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors(
   {
-      origin: ["https://deploy-mern-frontend.vercel.app"],
+      origin: ["https://task-manager-front-end-five.vercel.app/"],
       methods: ["POST", "GET"],
       credentials: true
   }
