@@ -3,6 +3,8 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
 
+console.log("connected to frontend");
+
 const app = express();
 app.use(bodyParser.json());
 app.use(cors(
